@@ -26,3 +26,6 @@ F:\Desktop\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.pdb
 F:\Desktop\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Form1.resources
 F:\Desktop\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Properties.Resources.resources
 F:\Desktop\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.csproj.GenerateResource.Cache
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.exe.config
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.exe
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.pdb

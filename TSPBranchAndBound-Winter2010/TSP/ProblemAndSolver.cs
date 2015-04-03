@@ -19,11 +19,10 @@ namespace TSP
             /// </summary>
             public ArrayList Route;
 
-			// I think this is where we'll write our solution
             public TSPSolution(ArrayList iroute)
             {
-                Route = new ArrayList(iroute);
-				State initial = new State(iroute);
+                //Route = new ArrayList(iroute);
+				//State initial = new State(iroute);
             }
 
 
@@ -278,7 +277,7 @@ namespace TSP
 
             for (int x = 1; x < Cities.Length; x++)
             {
-                double dist=first.costToGetTo(Cities[x]);
+                double dist = first.costToGetTo(Cities[x]);
                 if(dist > champ)
                 {
                     champ = dist;
@@ -291,7 +290,6 @@ namespace TSP
 
             while (quick.Count != Cities.Length)
             {
-
                 City insert = null;
                 double winner = 0;
 
@@ -304,12 +302,12 @@ namespace TSP
                         for (int j = 0; j < quick.Count; j++)
                         {
                             double path = r.costToGetTo((City)quick[j]);
-                            if(path<loser)
+                            if (path < loser)
                             {
                                 loser = path;
                             }
                         }
-                        if(winner<loser)
+                        if (winner < loser)
                         {
                             winner = loser;
                             insert = r;
@@ -317,11 +315,11 @@ namespace TSP
                     }
                 }
 
-                double minintersect = Double.PositiveInfinity;
+                double minIntersect = Double.PositiveInfinity;
                 int frontindex = -1;
                 int behindindex = -1;
 
-                for (int k=0;k<quick.Count;k++)
+                for (int k=0; k < quick.Count; k++)
                 {
                     City begin = (City)quick[k % quick.Count];
                     City last = (City)quick[(k + 1) % quick.Count];
@@ -329,15 +327,14 @@ namespace TSP
                     double crj = insert.costToGetTo(last);
                     double cij = begin.costToGetTo(last);
                     double total = cir + crj - cij;
-                    if(total<minintersect)
+                    if(total < minIntersect)
                     {
-                        minintersect = total;
+                        minIntersect = total;
                         frontindex = k;
                         behindindex = k + 1;
                     }
                 }
                 quick.Insert(behindindex, insert);
-
             }
             return quick;
         }
