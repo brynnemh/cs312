@@ -17,15 +17,26 @@ C:\Users\Brynne Hansen\Documents\Visual Studio 2010\Projects\TSPBranchAndBound-W
 C:\Users\Brynne Hansen\Documents\Visual Studio 2010\Projects\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Properties.Resources.resources
 C:\Users\Brynne Hansen\Documents\Visual Studio 2010\Projects\TSPBranchAndBound-Winter2010\TSP\obj\Debug\GenerateResource-ResGen.read.1.tlog
 C:\Users\Brynne Hansen\Documents\Visual Studio 2010\Projects\TSPBranchAndBound-Winter2010\TSP\obj\Debug\GenerateResource-ResGen.write.1.tlog
-F:\Desktop\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.exe
-F:\Desktop\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.pdb
-F:\Desktop\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.csprojResolveAssemblyReference.cache
-F:\Desktop\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.exe.config
-F:\Desktop\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.exe
-F:\Desktop\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.pdb
-F:\Desktop\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Form1.resources
-F:\Desktop\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Properties.Resources.resources
-F:\Desktop\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.csproj.GenerateResource.Cache
+C:\Users\Brynne Hansen\Documents\Visual Studio 2010\Projects\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.exe.config
+C:\Users\Brynne Hansen\Documents\Visual Studio 2010\Projects\TSPBranchAndBound-Winter2010\TSP\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Brynne Hansen\Documents\Visual Studio 2010\Projects\TSPBranchAndBound-Winter2010\TSP\obj\Debug\GenerateResource.write.1.tlog
+F:\Projects\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.exe.config
+F:\Projects\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.exe
+F:\Projects\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.pdb
+F:\Projects\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.csprojResolveAssemblyReference.cache
+F:\Projects\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Form1.resources
+F:\Projects\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Properties.Resources.resources
+F:\Projects\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.csproj.GenerateResource.Cache
+F:\Projects\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.exe
+F:\Projects\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.pdb
 F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.exe.config
 F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.exe
 F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.pdb
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.exe
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.pdb
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Debug\Priority Queue.dll
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Debug\Priority Queue.pdb
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.csprojResolveAssemblyReference.cache
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Form1.resources
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Properties.Resources.resources
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.csproj.GenerateResource.Cache

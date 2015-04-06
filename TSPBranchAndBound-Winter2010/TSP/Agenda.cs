@@ -9,7 +9,7 @@ namespace TSP
 {
     class Agenda
     {
-        Dictionary<int, HeapPriorityQueue<State>> statespace = new Dictionary<int, HeapPriorityQueue<State>>();
+       Dictionary<int, HeapPriorityQueue<State>> statespace = new Dictionary<int, HeapPriorityQueue<State>>();
 
     }
 }

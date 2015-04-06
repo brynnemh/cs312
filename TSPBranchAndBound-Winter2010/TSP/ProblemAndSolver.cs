@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace TSP
 {
@@ -21,7 +22,7 @@ namespace TSP
 
             public TSPSolution(ArrayList iroute)
             {
-                //Route = new ArrayList(iroute);
+                Route = new ArrayList(iroute);
 				//State initial = new State(iroute);
             }
 
@@ -59,11 +60,13 @@ namespace TSP
         /// the cities in the current problem.
         /// </summary>
         private City[] Cities;
-        /// <summary>
+        
+		/// <summary>
         /// a route through the current problem, useful as a temporary variable. 
         /// </summary>
         private ArrayList Route;
-        /// <summary>
+        
+		/// <summary>
         /// best solution so far. 
         /// </summary>
         private TSPSolution bssf; 
@@ -239,29 +242,53 @@ namespace TSP
 
         /// <summary>
         ///  solve the problem.  This is the entry point for the solver when the run button is clicked
-        /// right now it just picks a simple solution. 
+        ///  right now it just picks a simple solution. 
         /// </summary>
         public void solveProblem()
         {
-            int x;
-            Route = new ArrayList(); 
-            // this is the trivial solution. 
+            Stopwatch timer = new Stopwatch();
 
+			Route = new ArrayList();
+
+			//bssf	
             ArrayList sol = quickSolution();
             bssf = new TSPSolution(sol);
-            double bssfscore=bssf.costOfRoute();
+			double bssfCost = costOfBssf();
+			//init_state
+			State initial = new State(sol);
 
-            State initial = new State(sol);
+			timer.Start();
+			while (/*!Agenda.empty &&*/ timer.Elapsed.Minutes < 1 /*&& bssfCost != Agenda.first().bound*/)
+			{
+			    State s = initial; // change to agenda.first
+			    //Agenda.remove_first();
+			    //if (/*s.bound < bssfCost*/)
+			    //{
+			        List<State> children = s.successors();
+			        foreach (State child in children)
+			        {
+                        if (!(timer.Elapsed.Minutes < 1))
+                        {
+                            timer.Stop();
+                            break;
+                        }
+			            if (child.bound < bssfCost)
+			            {
+			                if (child.criterion())
+			                    bssf = new TSPSolution(child.getTour());
+			                //else
+			                    //Agenda.add(child);
 
+			            }
+			        }
+			    //}
+			}
+			timer.Stop();
 
-//            for (x = 0; x < Cities.Length; x++)
-//            {
-//                Route.Add( Cities[Cities.Length - x -1]);
-//            }
-            // call this the best solution so far.  bssf is the route that will be drawn by the Draw method. 
-//            bssf = new TSPSolution(Route);
             // update the cost of the tour. 
             Program.MainForm.tbCostOfTour.Text = " " + bssf.costOfRoute();
+			// print out the time elapsed
+			Program.MainForm.tbElapsedTime.Text = timer.Elapsed.ToString();
             // do a refresh. 
             Program.MainForm.Invalidate();
         }
