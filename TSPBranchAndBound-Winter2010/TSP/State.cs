@@ -18,7 +18,7 @@ namespace TSP
 
 		private ArrayList tour;
 		private double[,] costMatrix;
-		public double bound { get; }
+        public double bound { get; set; }
 		
         #endregion 
 

@@ -56,6 +56,8 @@ namespace TSP
         
         private const int CITY_ICON_SIZE = 5;
 
+        private TimeSpan timeLimit = new TimeSpan(0,1,0);
+
         /// <summary>
         /// the cities in the current problem.
         /// </summary>
@@ -258,7 +260,7 @@ namespace TSP
 			State initial = new State(sol);
 
 			timer.Start();
-			while (/*!Agenda.empty &&*/ timer.Elapsed.Minutes < 1 /*&& bssfCost != Agenda.first().bound*/)
+			while (/*!Agenda.empty &&*/ timer.Elapsed < timeLimit /*&& bssfCost != Agenda.first().bound*/)
 			{
 			    State s = initial; // change to agenda.first
 			    //Agenda.remove_first();
@@ -267,7 +269,7 @@ namespace TSP
 			        List<State> children = s.successors();
 			        foreach (State child in children)
 			        {
-                        if (!(timer.Elapsed.Minutes < 1))
+                        if (!(timer.Elapsed < timeLimit))
                         {
                             timer.Stop();
                             break;
