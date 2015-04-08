@@ -103,6 +103,8 @@ namespace TSP
             get { return _size; }
         }
 
+        //Possibly put the agenda here
+
         public int Seed
         {
             get { return _seed; }
@@ -252,20 +254,25 @@ namespace TSP
 
 			Route = new ArrayList();
 
+            Agenda agenda = new Agenda();
+
 			//bssf	
             ArrayList sol = quickSolution();
             bssf = new TSPSolution(sol);
-			double bssfCost = costOfBssf();
+            Console.WriteLine(costOfBssf());
+			//double bssfCost = costOfBssf();
 			//init_state
 			State initial = new State(sol);
 
+            agenda.add(initial);
+
 			timer.Start();
-			while (/*!Agenda.empty &&*/ timer.Elapsed < timeLimit /*&& bssfCost != Agenda.first().bound*/)
+			while (!agenda.empty() && timer.Elapsed < timeLimit && costOfBssf() != agenda.first().bound)
 			{
-			    State s = initial; // change to agenda.first
-			    //Agenda.remove_first();
-			    //if (/*s.bound < bssfCost*/)
-			    //{
+                State s = agenda.first(); //initial; // change to agenda.first()
+			    agenda.remove_first();
+			    if (s.bound < costOfBssf())
+			    {
 			        List<State> children = s.successors();
 			        foreach (State child in children)
 			        {
@@ -274,16 +281,15 @@ namespace TSP
                             timer.Stop();
                             break;
                         }
-			            if (child.bound < bssfCost)
+			            if (child.bound < costOfBssf())
 			            {
 			                if (child.criterion())
 			                    bssf = new TSPSolution(child.getTour());
-			                //else
-			                    //Agenda.add(child);
-
+			                else
+			                    agenda.add(child);
 			            }
 			        }
-			    //}
+			    }
 			}
 			timer.Stop();
 

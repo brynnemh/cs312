@@ -40,3 +40,14 @@ F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.csprojResolveA
 F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Form1.resources
 F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Properties.Resources.resources
 F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.csproj.GenerateResource.Cache
+F:\Desktop\CS 312\Project7\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.exe.config
+F:\Desktop\CS 312\Project7\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.exe
+F:\Desktop\CS 312\Project7\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.pdb
+F:\Desktop\CS 312\Project7\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.exe
+F:\Desktop\CS 312\Project7\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Debug\TSP.pdb
+F:\Desktop\CS 312\Project7\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Debug\Priority Queue.dll
+F:\Desktop\CS 312\Project7\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Debug\Priority Queue.pdb
+F:\Desktop\CS 312\Project7\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.csprojResolveAssemblyReference.cache
+F:\Desktop\CS 312\Project7\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Form1.resources
+F:\Desktop\CS 312\Project7\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.Properties.Resources.resources
+F:\Desktop\CS 312\Project7\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Debug\TSP.csproj.GenerateResource.Cache
