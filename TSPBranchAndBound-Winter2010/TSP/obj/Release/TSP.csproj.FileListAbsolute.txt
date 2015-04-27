@@ -1,0 +1,11 @@
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Release\TSP.exe.config
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Release\TSP.exe
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Release\TSP.pdb
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Release\Priority Queue.dll
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\bin\Release\Priority Queue.pdb
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Release\TSP.csprojResolveAssemblyReference.cache
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Release\TSP.Form1.resources
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Release\TSP.Properties.Resources.resources
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Release\TSP.csproj.GenerateResource.Cache
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Release\TSP.exe
+F:\repos\cs312-tsp\TSPBranchAndBound-Winter2010\TSP\obj\Release\TSP.pdb

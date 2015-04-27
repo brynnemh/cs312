@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace TSP
 {
@@ -23,9 +24,8 @@ namespace TSP
             public TSPSolution(ArrayList iroute)
             {
                 Route = new ArrayList(iroute);
-				//State initial = new State(iroute);
+                //State initial = new State(iroute);
             }
-
 
             /// <summary>
             ///  compute the cost of the current route.  does not check that the route is complete, btw.
@@ -36,10 +36,10 @@ namespace TSP
             {
                 // go through each edge in the route and add up the cost. 
                 int x;
-                City here; 
+                City here;
                 double cost = 0D;
-                
-                for (x = 0; x < Route.Count-1; x++)
+
+                for (x = 0; x < Route.Count - 1; x++)
                 {
                     here = Route[x] as City;
                     cost += here.costToGetTo(Route[x + 1] as City);
@@ -47,8 +47,24 @@ namespace TSP
                 // go from the last city to the first. 
                 here = Route[Route.Count - 1] as City;
                 cost += here.costToGetTo(Route[0] as City);
-                return cost; 
+                return cost;
             }
+
+            public String ToString()
+            {
+                StringBuilder builder = new StringBuilder();
+                builder.Append('[');
+                foreach (City c in Route)
+                {
+                    builder.Append("[" + c.X + "," + c.Y + "],");
+                }
+                builder.Remove(builder.Length - 1, 1); //Remove extra comma at end
+                builder.Append(']');
+
+                return builder.ToString();
+
+            }
+
         }
 
         #region private members
@@ -56,7 +72,7 @@ namespace TSP
         
         private const int CITY_ICON_SIZE = 5;
 
-        private TimeSpan timeLimit = new TimeSpan(0,1,0);
+        private TimeSpan timeLimit = new TimeSpan(0,1,0);//,0,0,0);
 
         /// <summary>
         /// the cities in the current problem.
@@ -250,55 +266,67 @@ namespace TSP
         /// </summary>
         public void solveProblem()
         {
+            Route = new ArrayList();
             Stopwatch timer = new Stopwatch();
-
-			Route = new ArrayList();
+            // baseline
+            //timer.Start();
+            //bssf = new TSPSolution(baseLine());
+            //timer.Stop();
 
             Agenda agenda = new Agenda();
 
-			//bssf	
+            //bssf	
             ArrayList sol = quickSolution();
             bssf = new TSPSolution(sol);
-            Console.WriteLine(costOfBssf());
-			//double bssfCost = costOfBssf();
-			//init_state
-			State initial = new State(sol);
+            double bssfCost = costOfBssf();
+            //init_state
+            State initial = new State(sol);
 
             agenda.add(initial);
 
-			timer.Start();
-			while (!agenda.empty() && timer.Elapsed < timeLimit && costOfBssf() != agenda.first().bound)
-			{
-                State s = agenda.first(); //initial; // change to agenda.first()
-			    agenda.remove_first();
-			    if (s.bound < costOfBssf())
-			    {
-			        List<State> children = s.successors();
-			        foreach (State child in children)
-			        {
+            timer.Start();
+            int depth = 1; // tour starts at 1 city
+            while (!agenda.empty() && timer.Elapsed < timeLimit && bssfCost != agenda.first(depth).bound)
+            {
+                State s = agenda.first(depth); //initial; // change to agenda.first()
+                agenda.remove_first(depth);
+                if (s.bound < bssfCost)
+                {
+                    List<State> children = s.successors();
+                    foreach (State child in children)
+                    {
                         if (!(timer.Elapsed < timeLimit))
                         {
                             timer.Stop();
                             break;
                         }
-			            if (child.bound < costOfBssf())
-			            {
-			                if (child.criterion())
-			                    bssf = new TSPSolution(child.getTour());
-			                else
-			                    agenda.add(child);
-			            }
-			        }
-			    }
-			}
-			timer.Stop();
+                        if (child.bound < bssfCost)
+                        {
+                            if (child.criterion())
+                            {
+                                Console.Write("updated BSSF: " + costOfBssf());
+                                bssf = new TSPSolution(child.getTour());
+                                bssfCost = costOfBssf();
+                            }
+                            else
+                                agenda.add(child);
+                        }
+                    }
+                }
+                depth++;
+            }
+            timer.Stop();
 
             // update the cost of the tour. 
             Program.MainForm.tbCostOfTour.Text = " " + bssf.costOfRoute();
-			// print out the time elapsed
-			Program.MainForm.tbElapsedTime.Text = timer.Elapsed.ToString();
+            // print out the time elapsed
+            Program.MainForm.tbElapsedTime.Text = timer.Elapsed.ToString();
             // do a refresh. 
             Program.MainForm.Invalidate();
+
+            // print to clipboard
+            Clipboard.SetText(bssf.ToString());
+            // System.Console.Write(bssf.ToString());
         }
         #endregion
 
@@ -372,6 +400,58 @@ namespace TSP
                 quick.Insert(behindindex, insert);
             }
             return quick;
+        }
+
+        public ArrayList baseLine()
+        {
+            // greedy algorithm
+            // create cost matrix
+            double[,] costMatrix = new double[Cities.Length,Cities.Length];
+            for (int i = 0; i < Cities.Length; ++i)
+            {
+                City current = Cities[i];
+                for (int j = i; j < Cities.Length; ++j)
+                {
+                    double currCost = current.costToGetTo(Cities[j]);
+                    if (i == j) // on the diagonal
+                        currCost = double.PositiveInfinity;
+                    costMatrix[i, j] = currCost;
+                    costMatrix[j, i] = costMatrix[i, j];
+                }
+            }
+
+            ArrayList greedySolution = new ArrayList();
+            City first = Cities[0];
+            greedySolution.Add(first); // add the first city
+            City previous = first;
+            int index = 0;
+            do
+            {
+                // mark out previous city in costMatrix 
+                for (int i = 0; i < Cities.Length; ++i)
+                    costMatrix[i, index] = double.MaxValue;
+
+                // find the min distance in the row
+                double min = double.MaxValue;
+                int winner = -1;
+                for (int i = 0; i < Cities.Length; ++i)
+                {
+                    if (costMatrix[index,i] < min)
+                    {
+                        min = costMatrix[index, i];
+                        winner = i;
+                    }
+                }
+                City nextInRoute = Cities[winner];
+                greedySolution.Add(nextInRoute);
+
+                // update index
+                index = winner;
+                previous = Cities[winner];
+            }
+            while (greedySolution.Count != Cities.Length);
+
+            return greedySolution;
         }
     }
 }
